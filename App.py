@@ -222,8 +222,8 @@ def graphh(matrix, minDistance: int, permutation):
     colors = [cmap(i) for i in np.linspace(0, 1, lenght)]
     labels = [str(n + 1) for n in range(lenght)]
     chem = str(permutation[0])
-    for i in range(1,len(permutation)):
-        chem += ','+str(permutation[i])
+    for i in range(1, len(permutation)):
+        chem += ',' + str(permutation[i])
 
     f = plt.figure(figsize=(lenght + 4, lenght + 4))
     ax = f.add_subplot(111)
@@ -236,7 +236,8 @@ def graphh(matrix, minDistance: int, permutation):
     lgd = plt.legend(markers, labels, numpoints=1, loc='best', bbox_to_anchor=(0.5, 0., 0.5, 0.5))
 
     # Plot descriptive text
-    textstr = "number of cities : %d\n First city : %d\nDistance Min: %d \n cities: %s" % (lenght, permutation[0], minDistance,chem)
+    textstr = "number of cities : %d\n First city : %d\nDistance Min: %d \n cities: %s" % (
+    lenght, permutation[0], minDistance, chem)
     props = dict(boxstyle="round,pad=0.3,rounding_size=0.2", facecolor='#b3ffb3', alpha=0.5)
     plt.text(0.05, 0.98, textstr, transform=ax.transAxes, fontsize=14, verticalalignment='top', bbox=props)
 
@@ -317,8 +318,8 @@ elif selected == "DP Approach":
                 col1.metric("Min Distance", f"{distance}")
                 col2.metric("Min Path ", f"{Path}")
                 st.header("Path Visualisation ")
-                plt=graphh(real_matrix, int(distance), Path)
-                st.pyplot(plt, use_container_width=True)
+                plt = graphh(real_matrix, int(distance), Path)
+                st.pyplot(plt)
                 plt.savefig("plot.png")
                 with open("plot.png", "rb") as file:
                     btn = st.download_button(
@@ -335,7 +336,7 @@ elif selected == "DP Approach":
                 col1.metric("Min Distance", f"{distance}")
                 col2.metric("Min Path ", f"{Path}")
                 st.header("Path Visualisation ")
-                plt=graphh(matrix_agadir, int(distance), Path)
+                plt = graphh(matrix_agadir, int(distance), Path)
                 st.pyplot(plt, use_container_width=True)
                 plt.savefig("plot.png")
                 with open("plot.png", "rb") as file:
@@ -353,7 +354,7 @@ elif selected == "DP Approach":
                 col1.metric("Min Distance", f"{distance}")
                 col2.metric("Min Path ", f"{Path}")
                 st.header("Path Visualisation ")
-                plt=graphh(matrix_Marrakech, int(distance), Path)
+                plt = graphh(matrix_Marrakech, int(distance), Path)
                 st.pyplot(plt, use_container_width=True)
                 plt.savefig("plot.png")
                 with open("plot.png", "rb") as file:
@@ -426,9 +427,6 @@ elif selected == "GVNS Approach":
 
 hide_streamlit_style = """
         <style>
-        header{visibility:hidden;}
-        #MainMenu{visibility:hidden;}
-        footer{visibility:hidden;}
          .css-18e3th9 {
                     padding-top: 2rem;
                     padding-bottom: 10rem;
