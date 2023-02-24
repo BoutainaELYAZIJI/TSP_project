@@ -237,7 +237,7 @@ def graphh(matrix, minDistance: int, permutation):
 
     # Plot descriptive text
     textstr = "number of cities : %d\n First city : %d\nDistance Min: %d \n cities: %s" % (
-    lenght, permutation[0], minDistance, chem)
+        lenght, permutation[0], minDistance, chem)
     props = dict(boxstyle="round,pad=0.3,rounding_size=0.2", facecolor='#b3ffb3', alpha=0.5)
     plt.text(0.05, 0.98, textstr, transform=ax.transAxes, fontsize=14, verticalalignment='top', bbox=props)
 
@@ -279,8 +279,32 @@ with st.sidebar:
                            )
 
 if selected == "About":
-    st.markdown("<h1 style='text-align: center;'>Travelling Sales Man Solver</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>Welcome to Travelling Sales Man Solver App ! 👋</h1>",
+                unsafe_allow_html=True)
 
+    # st.sidebar.success("Select a demo above.")
+
+    st.markdown(
+        """
+        The traveling salesman problem (TSP) is a well-known problem in theoretical computer science and operations research. The standard version of the TSP is a hard problem and belongs to the NP-Hard class. 
+        In this project, We build an application to implement the TSP by the dynamic approach and the GVNS approach.
+        **👈 Select an approach from the sidebar** to try it !
+        ### First upload Data 
+        - Check out [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/tsp-maroc.xlsx]
+        ### Choose the first, second or third instance to test
+        ### Choose Your First City (Rabat ,Marrakech..)
+        - Explore the minimum distance 
+        - Explore the minimum path
+        - Generate a visualization graph 
+        - download the graph
+        ### Code and documentation 
+        - Check out [https://github.com/BoutainaELYAZIJI/TSP_project]
+        - Report [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/TSP.pdf]
+        
+
+       
+    """
+    )
 elif selected == "DP Approach":
     st.markdown("<h1 style='text-align: center; '>Dynamic Programming</h1>", unsafe_allow_html=True)
 
@@ -425,6 +449,31 @@ elif selected == "GVNS Approach":
             )
         # Start
 
+else:
+    st.header(":mailbox: Connect With Us !")
+    st.markdown("""
+        We would love to respond to your questions. Feel Free to get in touch with us.
+    """)
+    contact_form = """
+            <form action="https://formsubmit.co/boutainait@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <label for="name">Full name</label><br>
+            <input type="text" name="name" placeholder="Your name.."required><br>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" placeholder="Your email.." required><br>
+            <label for="msg">Subject</label><br>
+               <textarea name="msg" placeholder="Write something.." style="height:200px">
+             </textarea> <br>
+             <button type="submit">Send</button>
+        </form>
+    """
+    st.markdown(contact_form, unsafe_allow_html=True)
+
+    #Use CSS File
+    def local_css(file_name):
+        with open(file_name) as f:
+            st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html=True)
+    local_css("style/style.css")
 hide_streamlit_style = """
         <style>
          .css-18e3th9 {
