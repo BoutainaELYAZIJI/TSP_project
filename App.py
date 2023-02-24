@@ -301,12 +301,21 @@ if selected == "About":
         - Check out [https://github.com/BoutainaELYAZIJI/TSP_project]
         - Report [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/TSP.pdf]
         
+        👈 Make sure your PC or phone is in light mode.
 
        
     """
     )
 elif selected == "DP Approach":
-    st.markdown("<h1 style='text-align: center; '>Dynamic Programming</h1>", unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center; '>Solve TSP using Dynamic Programming 👍</h1>", unsafe_allow_html=True)
+    st.markdown("""
+         - **Dynamic programming** is defined as a computer programming technique where an algorithmic problem is first broken down into sub-problems, 
+         the results are saved, and then the sub-problems are optimized to
+         find the overall solution — which usually has to do with finding the maximum and minimum range of the algorithmic query😁
+    """)
+
+
 
     uploaded_file = st.file_uploader("Choose a CSV  file", type=['csv', 'xlsx'])
 
@@ -392,8 +401,11 @@ elif selected == "DP Approach":
 
         # graphh(matrix, distance, Path)
 elif selected == "GVNS Approach":
-    st.markdown("<h1 style='text-align: center; '>Métaheuristic :GVNS Method</h1>", unsafe_allow_html=True)
-
+    st.markdown("<h1 style='text-align: center; '>Solve TSP using Meta-heuristic:GVNS 🔑 </h1>", unsafe_allow_html=True)
+    st.markdown("""
+         - GVNS, which stands for General Variable Neighborhood Search, is an established and commonly used metaheuristic for the 
+         expeditious solution of optimization problems that belong to the NP-hard class 😎
+    """)
     uploaded_file = st.file_uploader("Choose a CSV  file", type=['csv', 'xlsx'])
 
     if uploaded_file is not None:
@@ -429,24 +441,25 @@ elif selected == "GVNS Approach":
 
         x = initialization((city_option - 1))
         temps = int(st.selectbox('Time ?', (1, 4, 8)))
-        i = 0
-        solution, dist_min = GVNS(x, temps)
-        for i in range(0, len(solution)):
-            solution[i] += 1
-        col1, col2 = st.columns(2)
-        col1.metric("Min Distance", f"{dist_min}")
-        col2.metric("Min Path ", f"{solution}")
-        st.header("Path Visualisation ")
-        plt = graphh(instance, dist_min, solution)
-        st.pyplot(plt, use_container_width=True)
-        plt.savefig("plot.png")
-        with open("plot.png", "rb") as file:
-            btn = st.download_button(
-                label="Download The Graph",
-                data=file,
-                file_name="MinPath.png",
-                mime="image/png"
-            )
+        if st.button('Calculate !'):
+            i = 0
+            solution, dist_min = GVNS(x, temps)
+            for i in range(0, len(solution)):
+                solution[i] += 1
+            col1, col2 = st.columns(2)
+            col1.metric("Min Distance", f"{dist_min}")
+            col2.metric("Min Path ", f"{solution}")
+            st.header("Path Visualisation ")
+            plt = graphh(instance, dist_min, solution)
+            st.pyplot(plt, use_container_width=True)
+            plt.savefig("plot.png")
+            with open("plot.png", "rb") as file:
+                btn = st.download_button(
+                    label="Download The Graph",
+                    data=file,
+                    file_name="MinPath.png",
+                    mime="image/png"
+                )
         # Start
 
 else:
