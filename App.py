@@ -260,6 +260,28 @@ def graphh(matrix, minDistance: int, permutation):
     return plt
 
 
+def Calculatefunction(matrix, option):
+    Path, distance = solve_tsp_dynamic(matrix)
+    for index, item in enumerate(Path):
+        if item == option:
+            Path[index] = 1
+    Path[0] = Path[len(Path) - 1] = option
+    col1, col2 = st.columns(2)
+    col1.metric("Min Distance", f"{distance}")
+    col2.metric("Min Path ", f"{Path}")
+    st.header("Path Visualisation ")
+    plt = graphh(matrix, int(distance), Path)
+    st.pyplot(plt)
+    plt.savefig("plot.png")
+    with open("plot.png", "rb") as file:
+        btn = st.download_button(
+            label="Download The Graph",
+            data=file,
+            file_name="MinPath_Dynamic.png",
+            mime="image/png"
+        )
+
+
 st.set_page_config(
     page_title="Travelling Sales Man",
     page_icon=":penguin:",
@@ -289,17 +311,18 @@ if selected == "About":
         The traveling salesman problem (TSP) is a well-known problem in theoretical computer science and operations research. The standard version of the TSP is a hard problem and belongs to the NP-Hard class. 
         In this project, We build an application to implement the TSP by the dynamic approach and the GVNS approach.
         **👈 Select an approach from the sidebar** to try it !
-        ### First upload Data 
-        - Check out [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/tsp-maroc.xlsx]
-        ### Choose the first, second or third instance to test
-        ### Choose Your First City (Rabat ,Marrakech..)
+        ### First upload your Excel or CSV File
+        - Check out [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/tsp-maroc.xlsx]. It can be useful to test !
+        ### Enter your Sheet's Name
+        ### Enter your First City 
         - Explore the minimum distance 
         - Explore the minimum path
         - Generate a visualization graph 
-        - download the graph
-        ### Code and documentation 
+        - Download the graph
+        ### Code and Documentation 
         - Check out [https://github.com/BoutainaELYAZIJI/TSP_project]
         - Report [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/TSP.pdf]
+        
         
         👈 Make sure your PC or phone is in light mode.
 
@@ -315,91 +338,48 @@ elif selected == "DP Approach":
          find the overall solution — which usually has to do with finding the maximum and minimum range of the algorithmic query😁
     """)
 
-
-
     uploaded_file = st.file_uploader("Choose a CSV  file", type=['csv', 'xlsx'])
 
     if uploaded_file is not None:
-
-        instance = int(st.select_slider(
-            'Which instance ?',
-            options=['1', '2', '3']))
-
-        df = pd.read_excel(uploaded_file, sheet_name='instance_' + str(instance), index_col=False)
-
-        if instance == 1 or instance == 3:
-            df = df.fillna(0)
-            matrix = df.values
-
-            matrix = symmetrize(matrix)
-            st.dataframe(matrix)
-        else:
-            matrix = df.values
-            st.dataframe(matrix)
-
-        option = st.selectbox(
-            'Choose your First city?',
-            ('Rabat', 'Agadir', 'Marrakech'),
-
+        instance = st.text_input(
+            "Enter the name of your sheet  👇",
         )
-
-        real_matrix = matrix
-        if option == 'Rabat':
-            if st.button('Calculate !'):
-                Path, distance = solve_tsp_dynamic(real_matrix)
-                col1, col2 = st.columns(2)
-                col1.metric("Min Distance", f"{distance}")
-                col2.metric("Min Path ", f"{Path}")
-                st.header("Path Visualisation ")
-                plt = graphh(real_matrix, int(distance), Path)
-                st.pyplot(plt)
-                plt.savefig("plot.png")
-                with open("plot.png", "rb") as file:
-                    btn = st.download_button(
-                        label="Download The Graph",
-                        data=file,
-                        file_name="MinPath.png",
-                        mime="image/png"
-                    )
-        elif option == 'Agadir':
-            matrix_agadir = inversion(real_matrix, 0, 1)
-            if st.button('Calculate !'):
-                Path, distance = solve_tsp_dynamic(matrix_agadir)
-                col1, col2 = st.columns(2)
-                col1.metric("Min Distance", f"{distance}")
-                col2.metric("Min Path ", f"{Path}")
-                st.header("Path Visualisation ")
-                plt = graphh(matrix_agadir, int(distance), Path)
-                st.pyplot(plt, use_container_width=True)
-                plt.savefig("plot.png")
-                with open("plot.png", "rb") as file:
-                    btn = st.download_button(
-                        label="Download The Graph",
-                        data=file,
-                        file_name="MinPath.png",
-                        mime="image/png"
-                    )
+        try:
+            df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
+        except ValueError:
+            st.warning('Sheets Not found or Not compatible', icon="⚠️")
         else:
-            matrix_Marrakech = inversion(real_matrix, 0, 2)
-            if st.button('Calculate !'):
-                Path, distance = solve_tsp_dynamic(matrix_Marrakech)
-                col1, col2 = st.columns(2)
-                col1.metric("Min Distance", f"{distance}")
-                col2.metric("Min Path ", f"{Path}")
-                st.header("Path Visualisation ")
-                plt = graphh(matrix_Marrakech, int(distance), Path)
-                st.pyplot(plt, use_container_width=True)
-                plt.savefig("plot.png")
-                with open("plot.png", "rb") as file:
-                    btn = st.download_button(
-                        label="Download The Graph",
-                        data=file,
-                        file_name="MinPath.png",
-                        mime="image/png"
-                    )
-        # print(Path, distance)
+            symmetrie = st.radio(
+                "Do you want to make your matrice symetric ?",
+                ('Yes', 'No'))
+            if symmetrie == 'Yes':
+                df = df.fillna(0)
+                matrix = df.values
 
-        # graphh(matrix, distance, Path)
+                matrix = symmetrize(matrix)
+                st.dataframe(matrix)
+            else:
+                matrix = df.values
+                st.dataframe(matrix)
+
+            real_matrix = matrix
+            option = st.text_input(
+                "Enter your first city  👇",
+            )
+            if st.button('Calculate !'):
+                try:
+                    option=int(option)
+                    new_matrix = inversion(real_matrix, 0, option)
+                except Exception:
+                    st.error('Please enter a valid number', icon="🚨")
+                else :
+                    Calculatefunction(new_matrix, option)
+
+
+                # print(Path, distance)
+
+                # graphh(matrix, distance, Path)
+
 elif selected == "GVNS Approach":
     st.markdown("<h1 style='text-align: center; '>Solve TSP using Meta-heuristic:GVNS 🔑 </h1>", unsafe_allow_html=True)
     st.markdown("""
@@ -410,56 +390,60 @@ elif selected == "GVNS Approach":
 
     if uploaded_file is not None:
 
-        # inst_file = st.slider('Which instance ?', value=1)
-        inst_file = int(st.select_slider(
-            'Which instance ?',
-            options=['1', '2', '3']))
-        df = pd.read_excel(uploaded_file, sheet_name='instance_' + str(inst_file), index_col=False)
-        if inst_file == 1 or inst_file == 3:
-            df = df.fillna(0)
-            instance = df.values
-            instance = symmetrize(instance)
-            st.dataframe(instance)
+        instance = st.text_input(
+            "Enter the name of your sheet  👇",
+        )
+        try:
+            df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
+        except ValueError:
+            st.warning('Sheets Not found or not compatible', icon="⚠️")
         else:
-            instance = df.values
-            st.dataframe(instance)
+            symmetrie = st.radio(
+                "Do you want to make your matrice symetric ?",
+                ('Yes', 'No'))
+            if symmetrie == 'Yes':
+                df = df.fillna(0)
+                matrix = df.values
+
+                matrix = symmetrize(matrix)
+                st.dataframe(matrix)
+            else:
+                matrix = df.values
+                st.dataframe(matrix)
 
         # city_option = int(st.text_input('Type 1 ,2 or 3'))
-        option = st.radio(
-            "Choose your First city?",
-            ('Rabat', 'Agadir', 'Marrakech'))
-        if option == 'Rabat':
-            city_option = 1
+        real_matrix = matrix
 
-        elif option == 'Agadir':
-            city_option = 2
-            instance = inversion(instance, 0, 1)
-
+        try:
+            option = int(st.text_input(
+                "Enter your first city  👇",
+            ))
+        except ValueError or IndexError:
+            st.warning('Please enter a Number', icon="⚠️")
         else:
-            city_option = 3
-            instance = inversion(instance, 0, 2)
 
-        x = initialization((city_option - 1))
-        temps = int(st.selectbox('Time ?', (1, 4, 8)))
-        if st.button('Calculate !'):
-            i = 0
-            solution, dist_min = GVNS(x, temps)
-            for i in range(0, len(solution)):
-                solution[i] += 1
-            col1, col2 = st.columns(2)
-            col1.metric("Min Distance", f"{dist_min}")
-            col2.metric("Min Path ", f"{solution}")
-            st.header("Path Visualisation ")
-            plt = graphh(instance, dist_min, solution)
-            st.pyplot(plt, use_container_width=True)
-            plt.savefig("plot.png")
-            with open("plot.png", "rb") as file:
-                btn = st.download_button(
-                    label="Download The Graph",
-                    data=file,
-                    file_name="MinPath.png",
-                    mime="image/png"
-                )
+            x = initialization((option - 1))
+            temps = int(st.selectbox('Time ?', (1, 4, 8)))
+            if st.button('Calculate !'):
+                i = 0
+                solution, dist_min = GVNS(x, temps)
+                for i in range(0, len(solution)):
+                    solution[i] += 1
+                col1, col2 = st.columns(2)
+                col1.metric("Min Distance", f"{dist_min}")
+                col2.metric("Min Path ", f"{solution}")
+                st.header("Path Visualisation ")
+                plt = graphh(instance, int(dist_min), solution)
+                st.pyplot(plt)
+                plt.savefig("plot.png")
+                with open("plot.png", "rb") as file:
+                    btn = st.download_button(
+                        label="Download The Graph",
+                        data=file,
+                        file_name="MinPath_GVNS.png",
+                        mime="image/png"
+                    )
+
         # Start
 
 else:
@@ -482,10 +466,13 @@ else:
     """
     st.markdown(contact_form, unsafe_allow_html=True)
 
-    #Use CSS File
+
+    # Use CSS File
     def local_css(file_name):
         with open(file_name) as f:
-            st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html=True)
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
     local_css("style/style.css")
 hide_streamlit_style = """
         <style>

@@ -77,12 +77,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/pc/OneDrive - Institut National de Statistique et d'Economie Appliquee/Documents/GitHub/TSP_project",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pc/OneDrive - Institut National de Statistique et d'Economie Appliquee/Documents/GitHub/TSP_project&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Boutaina\PycharmProjects\TSP_project" />
@@ -242,6 +242,17 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/itertools.pyi">
