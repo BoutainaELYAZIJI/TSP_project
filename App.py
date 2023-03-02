@@ -284,7 +284,7 @@ def Calculatefunction(matrix, option):
 
 st.set_page_config(
     page_title="Travelling Sales Man",
-    page_icon=":penguin:",
+    page_icon=":hello:",
     layout="wide",
 )
 with st.sidebar:
@@ -494,3 +494,13 @@ hide_streamlit_style = """
 # Remove whitespace from the top of the page and sidebar
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
