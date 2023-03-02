@@ -390,10 +390,7 @@ elif selected == "GVNS Approach":
     if uploaded_file is not None:
 
         instance = st.text_input(
-            "Enter the name of your sheet  👇",
-            "This is a placeholder",
-            key="placeholder"
-        )
+            "Enter the name of your sheet  👇")
         try:
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
         except ValueError:
@@ -413,7 +410,7 @@ elif selected == "GVNS Approach":
                 st.dataframe(matrix)
 
         # city_option = int(st.text_input('Type 1 ,2 or 3'))
-        real_matrix = matrix
+            real_matrix = matrix
 
         try:
             option = int(st.text_input(
