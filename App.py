@@ -340,7 +340,7 @@ elif selected == "DP Approach":
 
     if uploaded_file is not None:
         instance = st.text_input(
-            "Enter the name of your sheet  👇",
+            "Enter the name of your sheet  👇"
         )
         try:
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
@@ -380,8 +380,7 @@ elif selected == "DP Approach":
 elif selected == "GVNS Approach":
     st.markdown("<h1 style='text-align: center; '>Solve TSP using Meta-heuristic:GVNS 🔑 </h1>", unsafe_allow_html=True)
     st.markdown("""
-         - GVNS, which stands for General Variable Neighborhood Search, is an established and commonly used metaheuristic for the 
-         expeditious solution of optimization problems that belong to the NP-hard class 😎
+         - GVNS, which stands for General Variable Neighborhood Search, is an established and commonly used metaheuristic for the expeditious solution of optimization problems that belong to the NP-hard class 😎
     """)
     uploaded_file = st.file_uploader("Choose a CSV  file", type=['csv', 'xlsx'])
 
