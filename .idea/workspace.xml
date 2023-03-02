@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="057b615c-da15-4a33-9f3f-af7c9000fe00" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.streamlit/config.toml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.streamlit/config.toml.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.py" beforeDir="false" afterPath="$PROJECT_DIR$/App.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
