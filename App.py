@@ -412,37 +412,37 @@ elif selected == "GVNS Approach":
         # city_option = int(st.text_input('Type 1 ,2 or 3'))
             real_matrix = matrix
 
-        try:
-            option = int(st.text_input(
-                "Enter your first city  👇",
-            ))
-        except ValueError or IndexError:
-            st.warning('Please enter a Number')
-        else:
+            try:
+                option = int(st.text_input(
+                    "Enter your first city  👇",
+                ))
+            except ValueError or IndexError:
+                st.warning('Please enter a Number')
+            else:
 
-            x = initialization((option - 1))
-            temps = int(st.selectbox('Time ?', (1, 4, 8)))
-            if st.button('Calculate !'):
-                i = 0
-                solution, dist_min = GVNS(x, temps)
-                for i in range(0, len(solution)):
-                    solution[i] += 1
-                col1, col2 = st.columns(2)
-                col1.metric("Min Distance", f"{dist_min}")
-                col2.metric("Min Path ", f"{solution}")
-                st.header("Path Visualisation ")
-                plt = graphh(instance, int(dist_min), solution)
-                st.pyplot(plt)
-                plt.savefig("plot.png")
-                with open("plot.png", "rb") as file:
-                    btn = st.download_button(
-                        label="Download The Graph",
-                        data=file,
-                        file_name="MinPath_GVNS.png",
-                        mime="image/png"
-                    )
+                x = initialization((option - 1))
+                temps = int(st.selectbox('Time ?', (1, 4, 8)))
+                if st.button('Calculate !'):
+                    i = 0
+                    solution, dist_min = GVNS(x, temps)
+                    for i in range(0, len(solution)):
+                        solution[i] += 1
+                    col1, col2 = st.columns(2)
+                    col1.metric("Min Distance", f"{dist_min}")
+                    col2.metric("Min Path ", f"{solution}")
+                    st.header("Path Visualisation ")
+                    plt = graphh(instance, int(dist_min), solution)
+                    st.pyplot(plt)
+                    plt.savefig("plot.png")
+                    with open("plot.png", "rb") as file:
+                        btn = st.download_button(
+                            label="Download The Graph",
+                            data=file,
+                            file_name="MinPath_GVNS.png",
+                            mime="image/png"
+                        )
 
-        # Start
+            # Start
 
 else:
     st.header(":mailbox: Connect With Us !")
