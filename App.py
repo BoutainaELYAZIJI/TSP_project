@@ -398,7 +398,7 @@ elif selected == "GVNS Approach":
         try:
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
         except ValueError:
-            st.warning('Sheets Not found or not compatible', icon="⚠️")
+            st.warning('Sheets Not found or not compatible')
         else:
             symmetrie = st.radio(
                 "Do you want to make your matrice symetric ?",
@@ -421,7 +421,7 @@ elif selected == "GVNS Approach":
                 "Enter your first city  👇",
             ))
         except ValueError or IndexError:
-            st.warning('Please enter a Number', icon="⚠️")
+            st.warning('Please enter a Number')
         else:
 
             x = initialization((option - 1))
