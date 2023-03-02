@@ -333,8 +333,7 @@ elif selected == "DP Approach":
 
     st.markdown("<h1 style='text-align: center; '>Solve TSP using Dynamic Programming 👍</h1>", unsafe_allow_html=True)
     st.markdown("""
-         - **Dynamic programming** is defined as a computer programming technique where an algorithmic problem is first broken down into sub-problems, 
-         the results are saved, and then the sub-problems are optimized to find the overall solution — which usually has to do with finding the maximum and minimum range of the algorithmic query😁
+         - **Dynamic programming** is defined as a computer programming technique where an algorithmic problem is first broken down into sub-problems, the results are saved, and then the sub-problems are optimized to find the overall solution — which usually has to do with finding the maximum and minimum range of the algorithmic query😁
     """)
 
     uploaded_file = st.file_uploader("Choose a CSV  file", type=['csv', 'xlsx'])
