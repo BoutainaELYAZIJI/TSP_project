@@ -347,7 +347,7 @@ elif selected == "DP Approach":
         try:
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
         except ValueError:
-            st.warning('Sheets Not found or Not compatible')
+            st.warning('Sheets Not found or Not compatible', icon=":warning:")
         else:
             symmetrie = st.radio(
                 "Do you want to make your matrice symetric ?",
@@ -389,12 +389,13 @@ elif selected == "GVNS Approach":
 
     if uploaded_file is not None:
 
-        instance = st.text_input(
-            "Enter the name of your sheet  👇")
         try:
+
+            instance = st.text_input(
+                "Enter the name of your sheet  👇")
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
         except ValueError:
-            st.warning('Sheets Not found or not compatible')
+            st.warning('Sheets Not found or not compatible', icon=":warning:")
         else:
             symmetrie = st.radio(
                 "Do you want to make your matrice symetric ?",
@@ -409,7 +410,7 @@ elif selected == "GVNS Approach":
                 matrix = df.values
                 st.dataframe(matrix)
 
-        # city_option = int(st.text_input('Type 1 ,2 or 3'))
+            # city_option = int(st.text_input('Type 1 ,2 or 3'))
             real_matrix = matrix
 
             try:
@@ -417,7 +418,7 @@ elif selected == "GVNS Approach":
                     "Enter your first city  👇",
                 ))
             except ValueError or IndexError:
-                st.warning('Please enter a Number')
+                st.warning('Please enter a Number', icon=":warning:")
             else:
 
                 x = initialization((option - 1))
