@@ -392,6 +392,8 @@ elif selected == "GVNS Approach":
 
         instance = st.text_input(
             "Enter the name of your sheet  👇",
+            "This is a placeholder",
+              key="placeholder",
         )
         try:
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
