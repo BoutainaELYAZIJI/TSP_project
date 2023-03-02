@@ -347,7 +347,7 @@ elif selected == "DP Approach":
         try:
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
         except ValueError:
-            st.warning('Sheets Not found or Not compatible', icon="⚠️")
+            st.warning('Sheets Not found or Not compatible')
         else:
             symmetrie = st.radio(
                 "Do you want to make your matrice symetric ?",
@@ -368,13 +368,12 @@ elif selected == "DP Approach":
             )
             if st.button('Calculate !'):
                 try:
-                    option=int(option)
+                    option = int(option)
                     new_matrix = inversion(real_matrix, 0, option)
                 except Exception:
-                    st.error('Please enter a valid number', icon="🚨")
-                else :
+                    st.error('Please enter a valid number')
+                else:
                     Calculatefunction(new_matrix, option)
-
 
                 # print(Path, distance)
 
@@ -393,7 +392,7 @@ elif selected == "GVNS Approach":
         instance = st.text_input(
             "Enter the name of your sheet  👇",
             "This is a placeholder",
-              key="placeholder",
+            key="placeholder"
         )
         try:
             df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
