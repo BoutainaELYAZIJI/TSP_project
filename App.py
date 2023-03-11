@@ -1,6 +1,9 @@
+import requests
 import streamlit as st
 import pandas as pd
 from typing import Optional
+
+from streamlit_lottie import st_lottie
 from streamlit_option_menu import option_menu
 import random as rd
 import time
@@ -287,6 +290,15 @@ st.set_page_config(
     page_icon=":hello:",
     layout="wide",
 )
+
+
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
 with st.sidebar:
     selected = option_menu("TSP Solver App", ["About", "DP Approach", "GVNS Approach", "Contact"],
                            icons=['house', 'cloud-upload', "gear", 'person lines fill'], menu_icon="cast",
@@ -301,33 +313,41 @@ with st.sidebar:
                            )
 
 if selected == "About":
-    st.markdown("<h1 style='text-align: center;'>Welcome to Travelling Sales Man Solver App ! 👋</h1>",
+    st.markdown("<h1>Welcome to Travelling Sales Man Solver App ! 👋</h1>",
                 unsafe_allow_html=True)
 
     # st.sidebar.success("Select a demo above.")
-
+    lottie_hello = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_FWoMG3.json")
     st.markdown(
         """
-        The traveling salesman problem (TSP) is a well-known problem in theoretical computer science and operations research. The standard version of the TSP is a hard problem and belongs to the NP-Hard class. 
-        In this project, We build an application to implement the TSP by the dynamic approach and the GVNS approach.
-        **👈 Select an approach from the sidebar** to try it !
-        ### First upload your Excel or CSV File
-        - Check out [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/tsp-maroc.xlsx]. It can be useful to test !
-        ### Enter your Sheet's Name
-        ### Enter your First City 
-        - Explore the minimum distance 
-        - Explore the minimum path
-        - Generate a visualization graph 
-        - Download the graph
-        ### Code and Documentation 
-        - Check out [https://github.com/BoutainaELYAZIJI/TSP_project]
-        
-        
-        👈 Make sure your PC or phone is in light mode.
+        The traveling salesman problem (TSP) is a well-known problem in theoretical computer science and operations research.<br/>
+        The standard version of the TSP is a hard problem and belongs to the NP-Hard class.
+        In this project, We build an application to implement the TSP by **the dynamic approach and the GVNS approach.**
+    """,unsafe_allow_html=True)
+    _left, mid, _right = st.columns(3)
+    with mid:
+        st_lottie(
+            lottie_hello,
+            loop=True,
+            quality="medium",  # medium ; high
+            width="300px",
+            key=None,
+        )
+    st.markdown(""" 
+        ### **👈 Select an approach from the sidebar** to try it !
+    
+        - First upload your Excel or CSV File
+        Check out [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/tsp-maroc.xlsx]. It can be useful to test !
+        - Enter your Sheet's Name
+        - Enter your First City 
+            - Explore the minimum distance 
+            - Explore the minimum path
+            - Generate a visualization graph 
+            - Download the graph
+        - Code and Documentation 
+            Check out [https://github.com/BoutainaELYAZIJI/TSP_project]""")
 
-       
-    """
-    )
+
 elif selected == "DP Approach":
 
     st.markdown("<h1 style='text-align: center; '>Solve TSP using Dynamic Programming 👍</h1>", unsafe_allow_html=True)
@@ -406,7 +426,7 @@ elif selected == "GVNS Approach":
                 matrix = df.values
                 st.dataframe(matrix)
 
-        # city_option = int(st.text_input('Type 1 ,2 or 3'))
+            # city_option = int(st.text_input('Type 1 ,2 or 3'))
             real_matrix = matrix
 
             try:
@@ -490,7 +510,6 @@ hide_streamlit_style = """
 # Remove whitespace from the top of the page and sidebar
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
 
 padding = 0
 st.markdown(f""" <style>

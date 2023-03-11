@@ -7,7 +7,6 @@
     <list default="true" id="057b615c-da15-4a33-9f3f-af7c9000fe00" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.py" beforeDir="false" afterPath="$PROJECT_DIR$/App.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.toml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.toml.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +45,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="600" />
@@ -86,6 +88,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Boutaina\PycharmProjects\TSP_project" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\OneDrive - Institut National de Statistique et d'Economie Appliquee\Documents\GitHub\TSP_project\.streamlit" />
     </key>
   </component>
   <component name="RunManager" selected="Python.App">
