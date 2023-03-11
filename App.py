@@ -321,7 +321,6 @@ if selected == "About":
         - Download the graph
         ### Code and Documentation 
         - Check out [https://github.com/BoutainaELYAZIJI/TSP_project]
-        - Report [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/TSP.pdf]
         
         
         👈 Make sure your PC or phone is in light mode.
