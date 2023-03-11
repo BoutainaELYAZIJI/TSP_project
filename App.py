@@ -105,7 +105,7 @@ def change_neighborhood(x, xp, k):
 k_max = 3
 
 
-def RVNS(x, k_max, t=5):
+def RVNS(x, k_max, t=5.0):
     start_time = time.time()
     while time.time() - start_time < t * 60:
         k = 1
@@ -174,7 +174,6 @@ def symmetrize(matrix):
     Diagonal values are left untouched.
     """
     return matrix + matrix.T - np.diag(matrix.diagonal())
-
 
 def solve_tsp_dynamic(
         distance_matrix: np.ndarray,
@@ -325,17 +324,17 @@ if selected == "About":
         The traveling salesman problem (TSP) is a well-known problem in theoretical computer science and operations research.<br/>
         The standard version of the TSP is a hard problem and belongs to the NP-Hard class.
         In this project, We build an application to implement the TSP by **the dynamic approach and the GVNS approach.**
-    """,unsafe_allow_html=True)
-    _left,med, _right = st.columns(3)
+    """, unsafe_allow_html=True)
+    _left, med, _right = st.columns(3)
     with med:
         st_lottie(
             lottie_hello,
             loop=True,
             quality="medium",  # medium ; high
-            width="300px",
-            key=None,
+            width=300,
+            key=None
         )
-    #with _left:
+    # with _left:
     st.markdown(""" 
         ### **👈 Select an approach from the sidebar** to try it !
     
@@ -348,7 +347,7 @@ if selected == "About":
             - Generate a visualization graph 
             - Download the graph
         - <a  style="text-decoration:none;" href="https://github.com/BoutainaELYAZIJI/TSP_project">Check out The Code and Documentation </a>
-            """,unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
 
 
 elif selected == "DP Approach":
@@ -399,45 +398,45 @@ elif selected == "DP Approach":
 
                 # graphh(matrix, distance, Path)
 
+
 elif selected == "GVNS Approach":
     st.markdown("<h1 style='text-align: center; '>Solve TSP using Meta-heuristic:GVNS 🔑 </h1>", unsafe_allow_html=True)
     st.markdown("""
-         - GVNS, which stands for General Variable Neighborhood Search, is an established and commonly used metaheuristic for the expeditious solution of optimization problems that belong to the NP-hard class 😎
-    """)
+             - GVNS, which stands for General Variable Neighborhood Search, is an established and commonly used metaheuristic for the 
+             expeditious solution of optimization problems that belong to the NP-hard class 😎
+        """)
     uploaded_file = st.file_uploader("Choose a CSV  file", type=['csv', 'xlsx'])
 
     if uploaded_file is not None:
 
+        sheet = st.text_input(
+            "Enter the name of your sheet  👇",
+        )
         try:
-
-            instance = st.text_input(
-                "Enter the name of your sheet  👇")
-            df = pd.read_excel(uploaded_file, sheet_name=instance, index_col=False)
+            df = pd.read_excel(uploaded_file, sheet_name=sheet, index_col=False)
         except ValueError:
-            st.warning('Sheets Not found or not compatible')
+            st.warning('Sheets Not found or not compatible', icon="⚠️")
         else:
             symmetrie = st.radio(
                 "Do you want to make your matrice symetric ?",
                 ('Yes', 'No'))
             if symmetrie == 'Yes':
                 df = df.fillna(0)
-                matrix = df.values
-
-                matrix = symmetrize(matrix)
-                st.dataframe(matrix)
+                instance = df.values
+                instance = symmetrize(instance)
+                st.dataframe(instance)
             else:
-                matrix = df.values
-                st.dataframe(matrix)
+                instance = df.values
+                st.dataframe(instance)
 
-            # city_option = int(st.text_input('Type 1 ,2 or 3'))
-            real_matrix = matrix
+        # city_option = int(st.text_input('Type 1 ,2 or 3'))
 
             try:
                 option = int(st.text_input(
                     "Enter your first city  👇",
                 ))
             except ValueError or IndexError:
-                st.warning('Please enter a Number')
+                st.warning('Please enter a Number', icon="⚠️")
             else:
 
                 x = initialization((option - 1))
@@ -451,20 +450,20 @@ elif selected == "GVNS Approach":
                     col1.metric("Min Distance", f"{dist_min}")
                     col2.metric("Min Path ", f"{solution}")
                     st.header("Path Visualisation ")
-                    plt = graphh(instance, int(dist_min), solution)
+                    plt = graphh(instance, dist_min, solution)
                     st.pyplot(plt)
                     plt.savefig("plot.png")
-                    st.balloons()
-                    st.success("Congratulations! Your graph has been generated, save it to your device.👇", icon="✅")
                     with open("plot.png", "rb") as file:
+                        st.balloons()
+                        st.success("Congratulations! Your graph has been generated, save it to your device.👇", icon="✅")
                         btn = st.download_button(
                             label="Download The Graph",
                             data=file,
-                            file_name="MinPath_GVNS.png",
+                            file_name="MinPath.png",
                             mime="image/png"
                         )
+                    # Start
 
-            # Start
 
 else:
     st.header(":mailbox: Connect With Us !")
