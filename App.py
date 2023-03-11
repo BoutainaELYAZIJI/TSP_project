@@ -472,7 +472,7 @@ else:
     local_css("style/style.css")
 hide_streamlit_style = """
         <style>
-         #MainMenu {visibility: hidden;}
+        
          .css-18e3th9 {
                     padding-top: 2rem;
                     padding-bottom: 10rem;
