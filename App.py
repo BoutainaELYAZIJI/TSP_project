@@ -455,7 +455,7 @@ elif selected == "GVNS Approach":
                     plt.savefig("plot.png")
                     with open("plot.png", "rb") as file:
                         st.balloons()
-                        st.success("Congratulations! Your graph has been generated, save it to your device.👇", icon="✅")
+                        st.success("Congratulations! Your graph has been generated, save it to your device.👇")
                         btn = st.download_button(
                             label="Download The Graph",
                             data=file,
