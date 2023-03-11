@@ -324,8 +324,8 @@ if selected == "About":
         The standard version of the TSP is a hard problem and belongs to the NP-Hard class.
         In this project, We build an application to implement the TSP by **the dynamic approach and the GVNS approach.**
     """,unsafe_allow_html=True)
-    _left, mid, _right = st.columns(3)
-    with mid:
+    _left, _right = st.columns(2)
+    with _right:
         st_lottie(
             lottie_hello,
             loop=True,
@@ -333,7 +333,8 @@ if selected == "About":
             width="300px",
             key=None,
         )
-    st.markdown(""" 
+    with _left:
+         st.markdown(""" 
         ### **👈 Select an approach from the sidebar** to try it !
     
         - First upload your Excel or CSV File
