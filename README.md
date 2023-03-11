@@ -32,6 +32,9 @@ Next, the user is required to enter the name of the sheet in the uploaded file a
 <p>
 The user can also generate a visualization graph to view the minimum path and the distance between cities. Once the visualization is generated, the user can download the graph for future reference. This approach can be helpful for businesses and organizations that require optimized route planning for efficient transportation and logistics.
 
+- Pseudocode de TSP :computer:
+
+<img  src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/pseudo_code.png" >
 
 ### :full_moon_with_face: Dynammic Approach 
 <img  src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/DP.png" >
