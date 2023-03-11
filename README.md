@@ -1,4 +1,4 @@
-# TSP_project
+# Web application for solving traveling salesman problems by dynamic programming and GVNS
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://boutainaelyaziji-tsp-project-app-cod2bj.streamlit.app/)
 
 
@@ -40,6 +40,8 @@ The user can also generate a visualization graph to view the minimum path and th
 <img  src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/GVNS.png" >
 
  ### Graph succesfuly generated 
+ You can download the graph with the button below :) 
+ 
  <img  src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/Graph_succes.png" >
  
 ### Mobile view 
@@ -65,3 +67,7 @@ Streamlit need to run for development mode.
 streamlit run App.py
 ```
 
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/BoutainaELYAZIJI)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)]([https://www.linkedin.com/in/ismail-harik-241b371b9](https://www.linkedin.com/in/boutaina-elyaziji-678681184/))
