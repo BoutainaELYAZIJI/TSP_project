@@ -1,4 +1,6 @@
 # TSP_project
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://boutainaelyaziji-tsp-project-app-cod2bj.streamlit.app/)
+
 
 The objective of this project is to solve the problem of the traveling salesman. It is a
 mathematical problem which consists, given a set of cities separated by given distances,
