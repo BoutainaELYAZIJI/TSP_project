@@ -27,9 +27,16 @@ The user can also generate a visualization graph to view the minimum path and th
 <a style href="https://boutainaelyaziji-tsp-project-app-cod2bj.streamlit.app/" >
 <img  src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/HomePage.png" >
 <p>Click here to see the demo</p>
+ 
 </a>
 
 </div>
+
+### Dynammic Approach 
+<img  src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/DP.png" >
+
+### Mobile 
+<img  src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/mobile.png" >
 
 ### Install
 
