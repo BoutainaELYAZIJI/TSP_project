@@ -277,6 +277,8 @@ def Calculatefunction(matrix, option):
     st.pyplot(plt)
     plt.savefig("plot.png")
     with open("plot.png", "rb") as file:
+        st.balloons()
+        st.success("Congratulations! Your graph has been generated, save it to your device.👇", icon="✅")
         btn = st.download_button(
             label="Download The Graph",
             data=file,
@@ -324,8 +326,8 @@ if selected == "About":
         The standard version of the TSP is a hard problem and belongs to the NP-Hard class.
         In this project, We build an application to implement the TSP by **the dynamic approach and the GVNS approach.**
     """,unsafe_allow_html=True)
-    _left, _right = st.columns(2)
-    with _right:
+    _left,med, _right = st.columns(3)
+    with med:
         st_lottie(
             lottie_hello,
             loop=True,
@@ -333,20 +335,20 @@ if selected == "About":
             width="300px",
             key=None,
         )
-    with _left:
-         st.markdown(""" 
+    #with _left:
+    st.markdown(""" 
         ### **👈 Select an approach from the sidebar** to try it !
     
-        - First upload your Excel or CSV File
-        Check out [https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/tsp-maroc.xlsx]. It can be useful to test !
+        - First upload your Excel or CSV File.
+            - Check out <a style="text-decoration:none;" href="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/tsp-maroc.xlsx">[TSP Maroc Data] </a>. It can be useful to test !
         - Enter your Sheet's Name
         - Enter your First City 
             - Explore the minimum distance 
             - Explore the minimum path
             - Generate a visualization graph 
             - Download the graph
-        - Code and Documentation 
-            Check out [https://github.com/BoutainaELYAZIJI/TSP_project]""")
+        - <a  style="text-decoration:none;" href="https://github.com/BoutainaELYAZIJI/TSP_project">Check out The Code and Documentation </a>
+            """,unsafe_allow_html=True)
 
 
 elif selected == "DP Approach":
@@ -452,6 +454,8 @@ elif selected == "GVNS Approach":
                     plt = graphh(instance, int(dist_min), solution)
                     st.pyplot(plt)
                     plt.savefig("plot.png")
+                    st.balloons()
+                    st.markdown("""# **Congratulations! Your graph has been generated, save it to your device.👇**""")
                     with open("plot.png", "rb") as file:
                         btn = st.download_button(
                             label="Download The Graph",
@@ -492,7 +496,8 @@ else:
     local_css("style/style.css")
 hide_streamlit_style = """
         <style>
-        
+         #MainMenu{visibility:hidden;}
+         footer {visibility: hidden;} 
          .css-18e3th9 {
                     padding-top: 2rem;
                     padding-bottom: 10rem;
@@ -514,6 +519,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 padding = 0
 st.markdown(f""" <style>
+   
     .reportview-container .main .block-container{{
         padding-top: {padding}rem;
         padding-right: {padding}rem;
