@@ -8,8 +8,6 @@ in finding the shortest path which connects all the cities.
 We have implemented several methods to try to solve this problem :<br/> an exact method
 represented by dynamic programming as well as another metaheuristic method (GVNS).
 
-<img alt="TSP App"src="https://github.com/BoutainaELYAZIJI/TSP_project/blob/main/imgs/HomePage.png"/>
-
 ### Description : 
 <p>
 The given instruction provides a user interface for selecting an approach from the sidebar to perform a task related to the Traveling Salesman Problem (TSP). To start with, the user needs to upload an Excel or CSV file. The provided dataset named "TSP Maroc Data" is recommended to test the approach.
